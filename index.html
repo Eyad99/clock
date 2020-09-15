@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="h"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="m"></div>
+        </div>
+        <div class="sec">
+            <div class="se" id="s"></div>
+        </div>
+    </div>
+    <div class="toogleClass" onclick="toogleClass()"></div>
+    <script type="text/javascript">
+        function toogleClass(){
+            const body = document.querySelector('body');
+            body.classList.toggle('light');
+        }
+        const deg = 6;
+        const hr =document.querySelector('#h');
+        const mn =document.querySelector('#m');
+        const se =document.querySelector('#s');
+        setInterval(() => {
+            let day = new Date();
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * deg;
+            let ss = day.getSeconds() * deg;
+
+            hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+            mn.style.transform = `rotateZ(${mm}deg)`;
+            se.style.transform = `rotateZ(${ss}deg)`;
+        })
+
+
+        
+    </script>
+</body>
+</html>
